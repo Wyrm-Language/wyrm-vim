@@ -1,0 +1,45 @@
+# Re-indented with gg=G; must come out unchanged.
+fn message(name: str, greeting: str = "Hello") -> str:
+    if name == "":
+        return greeting
+    elif len(name) > 10:
+        x := name.substr(0, 10)
+        return greeting + x
+    else:
+        pass
+    return greeting + name
+
+fn [coordinate2d] length_squared() {
+    return (x**2 + y**2)
+}
+
+result := compute(first,
+    second,
+    third)
+after := 1
+
+tbl := {
+    "a": [
+        1, 2,
+    ],
+    "b": 2,
+}
+
+try:
+    risky()
+catch RuntimeError as e:
+    print(e)
+
+class person:
+    slot name: str = "John Doe" with:
+        setter = fn (value) { this.name = value; }
+        getter = undefined;
+
+    fn get_full_name() -> str: # trailing comment
+        # a comment line
+        return last_name + " " + first_name
+
+s := """not ( closed
+  kept as is:
+"""
+done := true

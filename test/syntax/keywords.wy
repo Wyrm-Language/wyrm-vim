@@ -1,0 +1,75 @@
+# SYNTAX TEST "keywords and decorators"
+
+emit signal
+# <- wyrmConcurrency
+#    ^^^^^^ wyrmConcurrency
+task thread
+# <- wyrmConcurrency
+@accept 'TOK_XID
+# <- wyrmDecorator
+#^^^^^^ wyrmDecorator
+#       ^^^^^^^^ wyrmSymbol
+@cached(1) fn f():
+#^^^^^^ wyrmDecorator
+#          ^^ wyrmDefine
+#             ^ wyrmFuncName
+@std::memo fn g(): pass
+#^^^^^^^^^ wyrmDecorator
+defer on error:
+# <- wyrmException
+#     ^^^^^^^^ wyrmDeferOnError
+if a and not b: x = 1 elif c: pass else: pass
+# <- wyrmConditional
+#    ^^^ wyrmOperatorWord
+#                     ^^^^ wyrmConditional
+#                                  ^^^^ wyrmConditional
+for x in xs: break
+# <- wyrmRepeat
+#     ^^ wyrmOperatorWord
+#            ^^^^^ wyrmRepeat
+var v: int ?= 5
+# <- wyrmStorage
+#      ^^^ wyrmBuiltinType
+#          ^^ wyrmDeclare
+fn [vec2, vec3] dot(other):
+# <- wyrmDefine
+#   ^^^^ wyrmReceiverType
+#         ^^^^ wyrmReceiverType
+#               ^^^ wyrmFuncName
+co count() -> int:
+# <- wyrmDefine
+#  ^^^^^ wyrmFuncName
+#          ^^ wyrmOperator
+class person(base):
+# <- wyrmDefine
+#     ^^^^^^ wyrmClassName
+#            ^^^^ wyrmClassParent
+    slot name: str with:
+#   ^^^^ wyrmStorage
+#                  ^^^^ wyrmStorageClass
+        setter = fn (value) { this.name = value }
+#       ^^^^^^ wyrmSlotOption
+#                             ^^^^ wyrmSelf
+p := pair(1, 2)
+#    ^^^^ wyrmBuiltinFunc
+fn h(p: pair) -> pair | nil:
+#       ^^^^ wyrmBuiltinType
+#                       ^^^ wyrmNil
+xs.append(1)
+#  ^^^^^^ wyrmBuiltinFunc
+obj!greet("hi")
+#  ^^^^^^ wyrmMessage
+import std::io::*
+# <- wyrmInclude
+#      ^^^ wyrmNamespace
+#         ^^ wyrmScope
+#             ^^^ wyrmScope
+t := f::$ast
+#       ^^^^ wyrmAstRef
+try: risky() catch RuntimeError as e: pass
+# <- wyrmException
+#            ^^^^^ wyrmException
+#                  ^^^^^^^^^^^^ wyrmBuiltinClass
+#                               ^^ wyrmInclude
+# TODO: more
+# ^^^^ wyrmTodo

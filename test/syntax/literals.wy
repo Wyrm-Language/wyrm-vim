@@ -1,0 +1,48 @@
+# SYNTAX TEST "literals"
+
+x := 0b1010_0000
+#    ^^^^^^^^^^^ wyrmNumber
+y := 4.
+#    ^^ wyrmFloat
+z := 1_234.5e-9
+#    ^^^^^^^^^^ wyrmFloat
+w := 0xfeed_beef
+#    ^^^^^^^^^^^ wyrmNumber
+n := a-1
+#     ^ wyrmOperator
+#      ^ wyrmNumber
+foo2 := 3
+# <- NONE
+s := """multi""" + "after"
+#    ^^^^^^^^^^^ wyrmString
+#                  ^^^^^^^ wyrmString
+e := "a\"b # not a comment"
+#      ^^ wyrmEscape
+#           ^^^^^^^^^^^^^^^ wyrmString
+r := R"tag(x )" y)tag" + 1
+#    ^^^^^^^^^^^^^^^^^ wyrmRawString
+#                        ^ wyrmNumber
+op := '<=>
+#     ^^^^ wyrmSymbol
+path := '::
+#       ^^^ wyrmSymbol
+sym := 'fn
+#      ^^^ wyrmSymbol
+dots := ...
+#       ^^^ wyrmEllipsis
+c := \" + \( + \newline + \bogus
+#    ^^ wyrmCharacter
+#         ^^ wyrmCharacter
+#              ^^^^^^^^ wyrmCharacter
+#                         ^^^^^^ wyrmCharError
+pl := $[1, 2]
+#     ^^ wyrmPairList
+b := true or false or undefined
+#    ^^^^ wyrmBoolean
+#                     ^^^^^^^^^ wyrmNil
+m := """first
+line two "still" # in string
+#        ^^^^^^^ wyrmString
+end"""
+after := 1 # comment
+#            ^^^^^^^ wyrmComment
