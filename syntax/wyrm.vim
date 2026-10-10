@@ -92,9 +92,10 @@ syn match   wyrmFloat         "\<\d[0-9_]*[eE][-+]\=\d\+\>"
 syn match   wyrmNumber        "\<0x\x[[:xdigit:]_]*\>"
 syn match   wyrmNumber        "\<0b[01][01_]*\>"
 
-" Symbols: 'name, and the operator symbols in _OPERATOR_SYMBOLS plus '::.
+" Symbols: 'name, and the operator symbols in _OPERATOR_SYMBOLS. `'::` is not a literal
+" (`:` breaks a symbol); it is written sym("::").
 syn match   wyrmSymbol        "'\h[[:alnum:]_$]*"
-syn match   wyrmSymbol        "'\%(\.\.\.\|<=>\|\*\*\|<<\|>>\|==\|!=\|<=\|>=\|::\|[-+*/%&|^~<>]\)"
+syn match   wyrmSymbol        "'\%(\.\.\.\|<=>\|\*\*\|<<\|>>\|==\|!=\|<=\|>=\|[-+*/%&|^~<>]\)"
 
 " Clojure-style characters: \a, \(, \newline. Any other multi-letter name is an error.
 syn match   wyrmCharacter     "\\\_."

@@ -24,8 +24,6 @@ r := R"tag(x )" y)tag" + 1
 #                        ^ wyrmNumber
 op := '<=>
 #     ^^^^ wyrmSymbol
-path := '::
-#       ^^^ wyrmSymbol
 sym := 'fn
 #      ^^^ wyrmSymbol
 dots := ...
